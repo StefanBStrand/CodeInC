@@ -1,0 +1,49 @@
+# Compiled object files
+*.o
+*.lo
+*.la
+*.al
+*.obj
+
+# Precompiled Headers
+*.gch
+*.pch
+
+# Compiled Dynamic libraries
+*.so
+*.dylib
+*.dll
+
+# Compiled Static libraries
+*.a
+*.lib
+
+# Executables
+*.out
+*.exe
+*.app
+*.i*
+*.dSYM/
+*.stackdump
+
+# Debug files
+*.d
+
+# Log files
+*.log
+
+# IDE directories
+.idea/
+.vscode/
+*.swp
+*.swo
+*.swn
+
+# Build directories
+/build/
+/bin/
+/lib/
+
+# System files
+.DS_Store
+
