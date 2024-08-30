@@ -5,6 +5,21 @@
 *.al
 *.obj
 
+# Ignore build directories
+cmake-build-debug/
+build/
+
+# Ignore CMake generated files
+CMakeFiles/
+CMakeCache.txt
+*.cmake
+*.ninja
+
+# Ignore executable files
+CodeC
+oppgave1_exec
+oppgave2_exec
+
 # Precompiled Headers
 *.gch
 *.pch
