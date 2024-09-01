@@ -6,5 +6,5 @@ set(CMAKE_C_STANDARD 11)
 add_executable(CodeC main.c)
 add_executable(oppgave1_exec oppgave_1.c)
 add_executable(oppgave2_exec oppgave_2.c)
-
+add_executable(oppgave3_exec oppgave_3.c)
 
