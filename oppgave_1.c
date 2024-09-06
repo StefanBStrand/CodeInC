@@ -1,5 +1,7 @@
 #include <stdio.h>
 
+// Note to teachers/assistants - I prefer writing all my code in english, comments as well.
+
 int main()
 {
     int i;

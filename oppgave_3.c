@@ -25,7 +25,8 @@ void beregnFn() {
     scanf("%d", &a);  // Reading input from user, stored in variable a
 
     FILE *file = fopen("fibonacci.txt", "w"); //Open file for writing
-    if (file == NULL) {
+    if (file == NULL) {    // If check was just to see if file was generated. could not find the txt that was written
+        // at first.
         printf("Error opening file\n");
         return;
     }
