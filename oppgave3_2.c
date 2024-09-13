@@ -7,7 +7,7 @@ int main() {
     printf("Enter how many integers you will provide: ");
     scanf("%d", &n); // Scanning input from user.
 
-    //Now to allocate memory for n amount of integers using malloc, and a pointer.
+    //Now to allocate memory for n amount of integers using malloc.
     int *A = (int *)malloc(n * sizeof(int)); // again, type casting (int *) to convert the memory returned
     // by malloc into an int pointer.
 

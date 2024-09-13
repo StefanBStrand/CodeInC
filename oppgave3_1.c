@@ -29,12 +29,12 @@ int palindrome(char *s1) {
         return 1; // meaning return true, strings are equal, and it is indeed a palindrome.
     }
     else {
-        return 0; //Strings are not equal, return false (0).
+        return 0; //If strings are not equal, return false (0).
     }
 }
 
 int main() {
-    char test[] = "yo banana boy";
+    char test[] = "racecar";
     if (palindrome(test)) {
         printf("THe string is a palindrome. \n");
     } else {
