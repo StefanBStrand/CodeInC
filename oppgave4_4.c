@@ -20,14 +20,15 @@ int main() {
         return 1;
 
     } else if (child > 0) {
-        printf("Sleeping for 5 seconds");
+        printf("Sleeping for 5 seconds\n");
+        sleep(5);
 
         printf("Parent is now terminating child process (PID %d)\n", child);
-        kill(child, SIGKILL);
+        kill(child, SIGINT);
 
         wait(NULL);
 
-        printf("Parent process: Hasta la vista - child is terminated");
+        printf("Parent process: Hasta la vista - child is terminated.\n");
 
     } else {
         perror("Fork failed");
