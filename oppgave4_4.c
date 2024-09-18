@@ -37,3 +37,8 @@ int main() {
 
     return 0;
 }
+
+
+// Forskjell mellom SIGKILL og SIGINT i termineringsprosess: etter å ha kjørt koden med SIGINT printes
+// statistikk om selve pingen ut, programmet får tid til å avslutte pent.
+// Med SIGKILL skjer ikke dette, det er en mye mer abrupt termingering av prosessen. Her printes ingen statistikk ut.
