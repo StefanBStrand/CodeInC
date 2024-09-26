@@ -15,6 +15,11 @@ char *filnavn_A = "A.txt", // Navn på de tre filene
      *filnavn_B = "B.txt", // som brukes til å
      *filnavn_C = "C.txt"; // lagre matrisene
 
+typedef struct {
+    int start_row;
+    int num_of_rows;
+} thread_args_t;
+
 // Leser inn N og dataene for A og B fra filer
 void les_AB()
 {
@@ -79,8 +84,10 @@ void skriv_C()
 
 
 // Utfører hele matrisemultiplikasjonen
-void multipliser_AB(int start_row, int num_of_rows)
-{
+void *multipliser_AB(void *arg) {
+    thread_args_t *args = (thread_args_t *)arg;
+    int start_row = args->start_row;
+    int num_of_rows = args->num_of_rows;
     int i, j, k;
     for (i = start_row; i < start_row + num_of_rows; i++)
         for (j = 0; j < N; j++)
@@ -92,11 +99,29 @@ void multipliser_AB(int start_row, int num_of_rows)
 }
 
 int main() {
+
     les_AB();
 
     pthread_t thread1, thread2, thread3, thread4;
+    thread_args_t thread_args[4];
 
-    pthread_create(&thread1, NULL, multipliser_AB(0,N/4), NULL);
+    for (int i = 0; i < 4; i++) {
+        thread_args[i].start_row = i * (N/4);
+        thread_args[i].num_of_rows = N/4;
+    }
 
+    pthread_create(&thread1, NULL, multipliser_AB, (void *)&thread_args[0]);
+    pthread_create(&thread2, NULL, multipliser_AB, (void *)&thread_args[1]);
+    pthread_create(&thread3, NULL, multipliser_AB, (void *)&thread_args[2]);
+    pthread_create(&thread4, NULL, multipliser_AB, (void *)&thread_args[3]);
+
+    pthread_join(thread1, NULL);
+    pthread_join(thread2, NULL);
+    pthread_join(thread3, NULL);
+    pthread_join(thread4, NULL);
+
+    skriv_C();
+
+    return 0;
 
 }
