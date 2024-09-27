@@ -39,9 +39,9 @@ int main ()
 }
 
 
-// Global variable shared by all threads
+// value -- > Global variable shared by all threads
 
 // Declare a mutex lock
-// Lock the mutex before accessing shared data
+// Lock the mutex before accessing shared data (value)
 // Unlock the mutex after accessing shared data
 // Initialize the mutex

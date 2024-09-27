@@ -83,7 +83,7 @@ void skriv_C()
 }
 
 
-// Utfører hele matrisemultiplikasjonen
+
 void *multipliser_AB(void *arg) {
     thread_args_t *args = (thread_args_t *)arg;
     int start_row = args->start_row;
