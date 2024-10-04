@@ -19,20 +19,20 @@ void *terningkast(void *nr)
         if (terning == 1) {
             blocked_threads++;
             printf("Tråd %3ld -> %d (%d)\n", (long) nr, terning, blocked_threads);
-            pthread_cond_wait(&cond, &mutex);  // Wait for signal
-            blocked_threads--;  // Once unblocked, decrement the count
+            pthread_cond_wait(&cond, &mutex);
+            blocked_threads--;
         }
         else if (terning == 6) {
-            pthread_cond_signal(&cond);  // Signal one waiting thread
+            pthread_cond_signal(&cond);
             printf("Tråd %3ld -> %d (%d)\n", (long) nr, terning, blocked_threads);
         }
         else {
-            printf("Tråd %3ld -> %d\n", (long) nr, terning);  // Regular output
+            printf("Tråd %3ld -> %d\n", (long) nr, terning);
         }
 
         pthread_mutex_unlock(&mutex);
 
-        usleep(rand() % MAX_WAIT + 1);  // Random delay
+        usleep(rand() % MAX_WAIT + 1);
     }
 }
 
@@ -51,6 +51,6 @@ int main()
     for (i = 0; i < n; i++)
         pthread_create(&t, NULL, terningkast, (void *) i);
 
-    pthread_join(t, NULL);  // Wait for threads (infinite loop, so it never really finishes)
+    pthread_join(t, NULL);
 
 }
