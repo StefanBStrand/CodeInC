@@ -108,8 +108,8 @@ void simulate() {
    avg_turn_around_time /= N;
    avg_wait_time /= N;
 
-   printf("%d Average turn-around time is: ", avg_turn_around_time);
-   printf("%d Average wait time is: ", avg_wait_time);
+   printf("Average turn-around time is: %.2f\n", avg_turn_around_time);
+   printf("Average wait time is: %.2f\n", avg_wait_time);
 
    }
 
