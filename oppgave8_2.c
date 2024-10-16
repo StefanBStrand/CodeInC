@@ -75,6 +75,21 @@ void read_file(char *filename)
 
 // P.id, P.arrive and P.cpu
 
+/*
+1. Initialize current_time to 0
+2. Mark all processes as not finished (initialize is_finished[] to 0)
+3. While there are unfinished processes:
+   a. Find the process with the shortest CPU time that has already arrived
+   b. If a process is found:
+      - Set its start time to current_time (if it hasn’t started yet)
+      - Add its CPU time to current_time
+      - Set its end time
+      - Mark it as finished
+   c. If no process has arrived yet, move current_time to the next process’s arrival time
+4. Print the results (start/end times) and calculate averages
+
+*/
+
 void simulate() {
    int current_time = 0; // variable to track the system time
    int is_finished[N];  // Boolean array to mark if each process is finished.
