@@ -39,13 +39,11 @@ void simulate() {
    int current_time = 0;
    int is_finished[N];
 
-
    for (int i = 0; i < N; i++) {
       is_finished[i] = 0;
    }
 
    int completed_processes = 0;
-
 
    while (completed_processes < N) {
       int shortest_job = -1;
@@ -94,6 +92,6 @@ void simulate() {
 
    }
 
-   //print statement goes here.
+   //print statement goes here...
 }
 
