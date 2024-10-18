@@ -31,7 +31,7 @@ struct process *P; // Peker til array med prosessen
    c. If no process has arrived yet, move current_time to the next process’s arrival time
 4. Print the results (start/end times) and calculate averages
 
-NOTE: I forgot to use the already defined global variable T....
+NOTE: I forgot to make use of the already defined global variable T....
 
 */
 
