@@ -80,13 +80,13 @@ void simulate() {
 
    for (int i = 0; i < N; i++) {
       if (current_time < P[i].arrive) {
-         P[i].start = P[i].arrive;  // if CPU is idle, process starts when it arrives.
+         P[i].start = P[i].arrive;
       }
       else {
          P[i].start = current_time;
       }
 
-      current_time += P[i].start + P[i].cpu; //Update current time with cpu time needed for each process.
+      current_time += P[i].start + P[i].cpu;
       P[i].end = current_time;
    }
 
