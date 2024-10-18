@@ -76,7 +76,7 @@ void read_file(char *filename)
 // P.id, P.arrive and P.cpu
 
 /*
-1. Initialize current_time to 0
+1. Initialize current_time to 0, and array to track finished processes?
 2. Mark all processes as not finished (initialize is_finished[] to 0)
 3. While there are unfinished processes:
    a. Find the process with the shortest CPU time that has already arrived
@@ -91,23 +91,22 @@ void read_file(char *filename)
 */
 
 void simulate() {
-   int current_time = 0; // variable to track the system time
-   int is_finished[N];  // Boolean array to mark if each process is finished.
+   int current_time = 0;
+   int is_finished[N];
 
-   // Initialize the array to mark all processes as unfinished. (Set them to 0)
+
    for (int i = 0; i < N; i++) {
       is_finished[i] = 0;
    }
 
-   int completed_processes = 0; // to track how many processes are finished
+   int completed_processes = 0;
 
-   // Loop until all processes are finished:
+
    while (completed_processes < N) {
-      int shortest_job = -1; // this variable will store the index of the process with the shortest job
-      // - 1 is just a placeholder - meaning if in a check it is = -1, then we have not found a process with the
-      // shortest job
+      int shortest_job = -1;
 
       // Step 1: Find the shortest job that has arrived and is not finished:
+
       for (int i = 0; i < N; i++) {
          if (is_finished[i] == 0 && P[i].arrive <= current_time) { //job has arrived if .arrive is < current time.
             if (shortest_job == -1 || P[i].cpu < P[shortest_job].cpu) {
@@ -117,26 +116,24 @@ void simulate() {
       }
 
       // Step 2: if a valid shortest job was found:
+
       if (shortest_job != -1) {
-         //Setting start time for the process
          if (P[shortest_job].start == 0) {
             P[shortest_job].start = current_time;
          }
 
-         //Update current time by adding the cpu time of the selected process
          current_time += P[shortest_job].cpu;
 
-         // Set/update end time for selected process:
          P[shortest_job].end = current_time;
 
-         // Mark the process as finished
-         is_finished[shortest_job] = 1; //Updating the array trackin finished jobs, setting current job to 1 (true)
+         is_finished[shortest_job] = 1;
          completed_processes++;
 
       }
 
       // Step 3: if no process has arrived, jump to the next arrival time.
       // Find the smallest arrival time for processes that are not finished.
+
       else {
          int next_arrival = -1;
          for (int i = 0; i < N; i++) {
