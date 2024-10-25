@@ -66,7 +66,7 @@ void first_in_first_out()
    int min_load_time = PF[0].load;
    int chosen_index = 0; // keep track of which process-index has the min load time.
 
-   for (int i = 0; i < N; i++) {
+   for (int i = 1; i < N; i++) {
 
       if (PF[i].load < min_load_time) {
          min_load_time = PF[i].load;
@@ -84,7 +84,17 @@ void first_in_first_out()
 //
 void least_recently_used()
 {
-  // Skal programmeres ferdig i oppgave 2
+   int oldest_last_ref_time = PF[0].last;
+   int chosen_index = 0;
+
+   for (int i = 1; i < N; i++) {
+      if (PF[i].last < oldest_last_ref_time) {
+         oldest_last_ref_time = PF[i].last;
+         chosen_index = i;
+      }
+   }
+   printf("Least Recently Used\n Page %d   Loaded:  %d  Last ref:  R:  %d  M:   %", PF[chosen_index].id,
+      PF[chosen_index].load, PF[chosen_index].last, PF[chosen_index].R, PF[chosen_index].M);
 }
 
 //second_chance(): Simulering av page replacement med Second Chance
