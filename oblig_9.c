@@ -103,7 +103,6 @@ void second_chance() {
             min_load_time = PF[i].load;
             if (PF[i].R == 0) {
                chosen_index = i;
-               break;
             }
          }
             else if (PF[i].R == 1) {
