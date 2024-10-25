@@ -58,13 +58,10 @@ void read_file(char *filename)
 //first_in_first_out(): Simulering av page replacement med FIFO
 //
 
-// There has been a page fault at system-time (T, in this case 300). Page replacement has to be done.
 void first_in_first_out()
 {
-   // Variable to save smallest load time - min_load_time
-   // Loop through struct array  with processes
    int min_load_time = PF[0].load;
-   int chosen_index = 0; // keep track of which process-index has the min load time.
+   int chosen_index = 0;
 
    for (int i = 1; i < N; i++) {
 
@@ -75,13 +72,10 @@ void first_in_first_out()
    }
    printf("First-In-First_Out\n Page  %d  Loaded:  %d  Last ref: %d  R: %d  M: %d", PF[chosen_index].id,
       PF[chosen_index].load, PF[chosen_index].last, PF[chosen_index].R, PF[chosen_index].M);
-   // if PF[i].load < min_load_time
-   // min_load_time = PF[i].load
-   // Print statements shows which process is chosen for page replacement.
 }
 
 //least_recently_used(): Simulering av page replacement med LRU
-//
+
 void least_recently_used()
 {
    int oldest_last_ref_time = PF[0].last;
@@ -93,15 +87,33 @@ void least_recently_used()
          chosen_index = i;
       }
    }
-   printf("Least Recently Used\n Page %d   Loaded:  %d  Last ref:  R:  %d  M:   %", PF[chosen_index].id,
+   printf("Least Recently Used\n Page %d   Loaded:  %d  Last ref:   %d R:  %d  M:  %d", PF[chosen_index].id,
       PF[chosen_index].load, PF[chosen_index].last, PF[chosen_index].R, PF[chosen_index].M);
 }
 
 //second_chance(): Simulering av page replacement med Second Chance
 //
-void second_chance()
-{
-   // Skal programmeres ferdig i oppgave 3
+void second_chance() {
+   int min_load_time = PF[0].load;
+   int chosen_index = -1;
+
+   while (chosen_index == -1) {
+      for (int i = 1; i < N; i++) {
+         if (PF[i].load < min_load_time) {
+            min_load_time = PF[i].load;
+            if (PF[i].R == 0) {
+               chosen_index = i;
+               break;
+            }
+         }
+            else if (PF[i].R == 1) {
+               PF[i].R = 0;
+               PF[i].load = T;
+            }
+   }
+   }
+   printf("Second Chance\n Page:  %d  Loaded:   %d   Last ref:   %d  R:   %d  M:  %d", PF[chosen_index].id,
+         PF[chosen_index].load, PF[chosen_index].last, PF[chosen_index].R, PF[chosen_index].M);
 }
 
 // main(): Leser filnavn med page frame data, leser inndata fra fil og
